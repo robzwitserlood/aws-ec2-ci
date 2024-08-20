@@ -1,9 +1,9 @@
 setup:
 	sudo apt install make
+	sudo apt-get update
 	sudo apt install python3-pip
 	sudo apt install python3.12-venv
 	python3 -m venv ~/.aws-ec2-ci
-	source ~/.aws-ec2-ci/bin/activate
 
 install:
 	pip install --upgrade pip &&\
@@ -14,5 +14,6 @@ test:
 
 lint:
 	pylint --disable=R,C hello.py
+	pylint --disable=R,C,no-member test_hello.py
 
 all: install lint test
